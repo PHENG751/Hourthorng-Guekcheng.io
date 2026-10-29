@@ -795,7 +795,8 @@ body {
       rgba(42, 47, 22, 0.48) 40%,
       rgba(42, 47, 22, 0.88)
     ),
-    url("../picture/Finalll.jpg") center/cover;
+    url("../picture/Finalll.jpg")center/cover;
+    /* url("../picture/Finalll.jpg"); */
   text-align: center;
   gap: 1.4svh;
   padding: 3svh 6vw;
@@ -810,7 +811,7 @@ body {
       rgba(42, 47, 22, 0.88)
     ),
     url("../picture/Finalll.jpg");
-  background-position: center, 44% center;
+  background-position: center, 38% center;
 }
 #cover .corner {
   position: absolute;

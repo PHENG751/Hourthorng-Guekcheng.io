@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="km">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>អាពាហ៍ពិពាហ៍ ហ៊ូរថង &amp; ហ្កេកចេង</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moul&family=Moulpali&family=Kantumruy+Pro:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Pinyon+Script&display=swap"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="preloader" id="preloader" role="status" aria-live="polite">
+      <div class="preloader-content">
+        <svg class="preloader-lotus" viewBox="0 0 120 100" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60 74C43 60 44 35 60 8c16 27 17 52 0 66Z" />
+            <path d="M59 74C37 70 25 52 22 31c19 9 33 22 37 43ZM61 74c22-4 34-22 37-43-19 9-33 22-37 43Z" />
+            <path d="M60 74C38 80 18 70 8 54c20-1 38 4 52 20ZM60 74c22 6 42-4 52-20-20-1-38 4-52 20Z" />
+            <path d="M18 83c27-7 57-7 84 0M31 91c19-4 39-4 58 0" />
+          </g>
+        </svg>
+        <div class="preloader-value">
+          <span id="preloader-number">0</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-track" aria-hidden="true">
+          <span id="preloader-fill"></span>
+        </div>
+      </div>
+    </div>
+    <section class="scr" id="env">
+      <svg class="envelope-clip-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="scalloped-envelope-flap" clipPathUnits="objectBoundingBox">
+            <path
+              d="M0 0H1 C.98 .025 .94 .045 .95 .075 C.97 .105 .91 .12 .90 .15 C.89 .18 .85 .19 .85 .225 C.85 .26 .80 .27 .80 .30 C.80 .335 .75 .35 .75 .375 C.75 .41 .70 .43 .70 .45 C.70 .485 .65 .51 .65 .525 C.65 .56 .60 .59 .60 .60 C.60 .635 .55 .67 .55 .675 C.55 .71 .52 .75 .5 1 C.48 .75 .45 .71 .45 .675 C.45 .67 .40 .635 .40 .60 C.40 .59 .35 .56 .35 .525 C.35 .51 .30 .485 .30 .45 C.30 .43 .25 .41 .25 .375 C.25 .35 .20 .335 .20 .30 C.20 .27 .15 .26 .15 .225 C.15 .19 .11 .18 .10 .15 C.09 .12 .03 .105 .05 .075 C.06 .045 .02 .025 0 0Z" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div class="ttl">
+
+        <b class="foil">សិរីសួស្តីអាពាហ៍ពិពាហ៍</b><i>The Wedding Invitation</i>
+      </div>
+      <div class="stage" id="stage">
+        <div class="back paper"></div>
+        <div class="card">
+          <img
+            class="card-art"
+            src="elements/paper.jpg"
+            alt="កាតអញ្ជើញអាពាហ៍ពិពាហ៍ ហ៊ួរថង និង ហ្កេកចេង" />
+        </div>
+        <div class="shadow" id="shd"></div>
+        <div class="pk">
+          <div class="l paper"></div>
+          <div class="r paper"></div>
+          <div class="b paper"></div>
+        </div>
+        <div class="flap" id="flap">
+          <div class="fc f paper">
+            <div class="logo flap-logo" data-logo></div>
+          </div>
+          <div class="fc k"></div>
+          <svg
+            class="flap-trim"
+            viewBox="0 0 100 62"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              class="flap-trim-shadow"
+              d="M0 0 C4 1 6 2 5 5 C4 7 8 9 10 10 C12 11 15 14 15 16 C15 18 19 20 20 21 C22 23 25 25 25 27 C25 29 29 31 30 32 C32 34 35 36 35 38 C35 40 39 42 40 43 C42 45 45 47 45 49 C45 51 49 55 50 62 M100 0 C96 1 94 2 95 5 C96 7 92 9 90 10 C88 11 85 14 85 16 C85 18 81 20 80 21 C78 23 75 25 75 27 C75 29 71 31 70 32 C68 34 65 36 65 38 C65 40 61 42 60 43 C58 45 55 47 55 49 C55 51 51 55 50 62"
+            />
+            <path
+              class="flap-trim-line"
+              d="M0 0 C4 1 6 2 5 5 C4 7 8 9 10 10 C12 11 15 14 15 16 C15 18 19 20 20 21 C22 23 25 25 25 27 C25 29 29 31 30 32 C32 34 35 36 35 38 C35 40 39 42 40 43 C42 45 45 47 45 49 C45 51 49 55 50 62 M100 0 C96 1 94 2 95 5 C96 7 92 9 90 10 C88 11 85 14 85 16 C85 18 81 20 80 21 C78 23 75 25 75 27 C75 29 71 31 70 32 C68 34 65 36 65 38 C65 40 61 42 60 43 C58 45 55 47 55 49 C55 51 51 55 50 62"
+            />
+          </svg>
+        </div>
+        <button class="seal" id="seal" aria-label="បើកធៀប">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDAgMTQwIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnLWZvaWwiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIuMzUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzljNzEyNCIvPjxzdG9wIG9mZnNldD0iLjI1IiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PHN0b3Agb2Zmc2V0PSIuNDUiIHN0b3AtY29sb3I9IiNmYmVmYzAiLz48c3RvcCBvZmZzZXQ9Ii42MiIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjxzdG9wIG9mZnNldD0iLjg1IiBzdG9wLWNvbG9yPSIjOWM3MTI0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHN0eWxlPi5rYi1maWxse2ZpbGw6dXJsKCNnLWZvaWwpfS5rYi1saW5le2ZpbGw6bm9uZTtzdHJva2U6dXJsKCNnLWZvaWwpO3N0cm9rZS13aWR0aDoxLjY7c3Ryb2tlLWxpbmVjYXA6cm91bmR9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2F4IiBjeD0iMzglIiBjeT0iMzIlIiByPSI3NSUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlN2M5N2EiLz48c3RvcCBvZmZzZXQ9Ii40NSIgc3RvcC1jb2xvcj0iI2I5OGMzNSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzZlNGMxNCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9IndheC1saXQiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjIuNiIgcmVzdWx0PSJiIi8+CiAgICAgIDxmZVNwZWN1bGFyTGlnaHRpbmcgaW49ImIiIHN1cmZhY2VTY2FsZT0iNSIgc3BlY3VsYXJDb25zdGFudD0iLjkiIHNwZWN1bGFyRXhwb25lbnQ9IjIyIiBsaWdodGluZy1jb2xvcj0iI2ZmZjZkYyIgcmVzdWx0PSJzIj4KICAgICAgICA8ZmVQb2ludExpZ2h0IHg9IjIwIiB5PSItMTAiIHo9IjkwIi8+CiAgICAgIDwvZmVTcGVjdWxhckxpZ2h0aW5nPgogICAgICA8ZmVDb21wb3NpdGUgaW49InMiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJzMiIvPgogICAgICA8ZmVDb21wb3NpdGUgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iczIiIG9wZXJhdG9yPSJhcml0aG1ldGljIiBrMT0iMCIgazI9IjEiIGszPSIuNzUiIGs0PSIwIi8+CiAgICA8L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9IndheC1wcmVzcyIgeD0iLTMwJSIgeT0iLTMwJSIgd2lkdGg9IjE2MCUiIGhlaWdodD0iMTYwJSI+CiAgICAgIDxmZU9mZnNldCBkeD0iLTEuMiIgZHk9Ii0xLjIiIGluPSJTb3VyY2VBbHBoYSIgcmVzdWx0PSJoaSIvPjxmZUZsb29kIGZsb29kLWNvbG9yPSIjM2IyNzA2IiBmbG9vZC1vcGFjaXR5PSIuNzUiLz48ZmVDb21wb3NpdGUgaW4yPSJoaSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9ImRhcmsiLz4KICAgICAgPGZlT2Zmc2V0IGR4PSIxLjIiIGR5PSIxLjQiIGluPSJTb3VyY2VBbHBoYSIgcmVzdWx0PSJsbyIvPjxmZUZsb29kIGZsb29kLWNvbG9yPSIjZmZmM2NmIiBmbG9vZC1vcGFjaXR5PSIuNyIvPjxmZUNvbXBvc2l0ZSBpbjI9ImxvIiBvcGVyYXRvcj0iaW4iIHJlc3VsdD0ibGlnaHQiLz4KICAgICAgPGZlTWVyZ2U+PGZlTWVyZ2VOb2RlIGluPSJsaWdodCIvPjxmZU1lcmdlTm9kZSBpbj0iZGFyayIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cGF0aCBkPSJNMTI3LjUxMDYgNzIgTDEyNy44NTQ5IDc3LjY5ODIgTDEzMC4wNDg2IDgzLjk0NDQgTDEzMS4zMzcyIDkwLjYwNjUgTDEyOS4yMTExIDk2LjUyNiBMMTI0LjQ2IDEwMS4xMDk1IEwxMTkuNzI0MiAxMDUuMjI0NyBMMTE1Ljk2NDggMTA5LjcyMjMgTDExMS45MTgzIDExMy45MTgzIEwxMDYuNzM2NSAxMTYuNzYzNSBMMTAxLjQyMSAxMTkuMDI0OSBMOTcuMDg2MyAxMjIuNjc0OCBMOTMuMTMwNCAxMjcuODQxNiBMODguMTc2IDEzMS45MTg0IEw4Mi4wNzIgMTMyLjY5IEw3NS44MzY0IDEzMS4yNTgyIEw3MCAxMzAuNDg2MSBMNjQuMTc0NiAxMzEuMTQ2MiBMNTguMjA0MyAxMzEuMzAxMiBMNTIuNTM4NCAxMjkuNTYzMyBMNDcuMTU1OCAxMjcuMTUwOSBMNDEuMjg0OSAxMjUuNzIyMSBMMzQuOTI1MSAxMjQuNDkzMyBMMjkuNjc0IDEyMS4xMzczIEwyNi44ODQgMTE1LjExNiBMMjUuNTIzNSAxMDguNTAwOSBMMjMuMjI0NiAxMDMuMjU0MyBMMTkuMzgxOCA5OS4wNTYgTDE1Ljc3NTggOTQuNDYwNCBMMTMuNzIxNSA4OS4wNzE5IEwxMi4xMDc4IDgzLjUxNTUgTDkuNDUxOCA3Ny45NjM1IEw2LjgyOTggNzIgTDYuOTMwMyA2NS43ODgyIEwxMC4yODYxIDYwLjEyMjIgTDE0LjIyMDQgNTUuMDc5NSBMMTYuMjE5MyA0OS43MjMzIEwxNi45ODQgNDMuNjYyNCBMMTguOTk1MSAzNy45MTk2IEwyMy4wMDg5IDMzLjQzNTQgTDI3LjU0NjkgMjkuNTQ2OSBMMzEuNTY3IDI1LjE2OTMgTDM1LjkyNDEgMjEuMDAxOSBMNDEuNjQzOCAxOC45NDkyIEw0OC4wODkxIDE5LjEwMjMgTDUzLjg4MzUgMTguODcwOSBMNTguODg0NyAxNi4xMTk3IEw2NC4wOTkgMTIuMDg2NSBMNzAgOS44MDUzIEw3Ni4wODQ2IDEwLjIyMTYgTDgyLjAyNjUgMTEuNTM4NyBMODguMDY1NCAxMi40NDY0IEw5My45NTg1IDE0LjE1OTEgTDk4LjczMiAxOC4yNDYyIEwxMDIuMjMwMiAyMy43NjQxIEwxMDUuOTYwOSAyOC4xODE1IEwxMTEuMjU1NCAzMC43NDQ2IEwxMTcuMTE3OCAzMy4zMzE1IEwxMjEuMjQ3NiAzNy43NTc1IEwxMjMuMTA3NCA0My42MTM1IEwxMjQuNTE1MSA0OS40MTkxIEwxMjYuNzY5IDU0Ljc3OTMgTDEyOC42NzgxIDYwLjMyODIgTDEyOC42MjM1IDY2LjIyNjEgTDEyNy41MTA2IDcyIFoiIGZpbGw9IiMwMDAiIG9wYWNpdHk9Ii4zNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMiA1KSIgc3R5bGU9ImZpbHRlcjpibHVyKDNweCkiLz4KICA8ZyBmaWx0ZXI9InVybCgjd2F4LWxpdCkiPgogICAgPHBhdGggZD0iTTEyNy41MTA2IDcwIEwxMjcuODU0OSA3NS42OTgyIEwxMzAuMDQ4NiA4MS45NDQ0IEwxMzEuMzM3MiA4OC42MDY1IEwxMjkuMjExMSA5NC41MjYgTDEyNC40NiA5OS4xMDk1IEwxMTkuNzI0MiAxMDMuMjI0NyBMMTE1Ljk2NDggMTA3LjcyMjMgTDExMS45MTgzIDExMS45MTgzIEwxMDYuNzM2NSAxMTQuNzYzNSBMMTAxLjQyMSAxMTcuMDI0OSBMOTcuMDg2MyAxMjAuNjc0OCBMOTMuMTMwNCAxMjUuODQxNiBMODguMTc2IDEyOS45MTg0IEw4Mi4wNzIgMTMwLjY5IEw3NS44MzY0IDEyOS4yNTgyIEw3MCAxMjguNDg2MSBMNjQuMTc0NiAxMjkuMTQ2MiBMNTguMjA0MyAxMjkuMzAxMiBMNTIuNTM4NCAxMjcuNTYzMyBMNDcuMTU1OCAxMjUuMTUwOSBMNDEuMjg0OSAxMjMuNzIyMSBMMzQuOTI1MSAxMjIuNDkzMyBMMjkuNjc0IDExOS4xMzczIEwyNi44ODQgMTEzLjExNiBMMjUuNTIzNSAxMDYuNTAwOSBMMjMuMjI0NiAxMDEuMjU0MyBMMTkuMzgxOCA5Ny4wNTYgTDE1Ljc3NTggOTIuNDYwNCBMMTMuNzIxNSA4Ny4wNzE5IEwxMi4xMDc4IDgxLjUxNTUgTDkuNDUxOCA3NS45NjM1IEw2LjgyOTggNzAgTDYuOTMwMyA2My43ODgyIEwxMC4yODYxIDU4LjEyMjIgTDE0LjIyMDQgNTMuMDc5NSBMMTYuMjE5MyA0Ny43MjMzIEwxNi45ODQgNDEuNjYyNCBMMTguOTk1MSAzNS45MTk2IEwyMy4wMDg5IDMxLjQzNTQgTDI3LjU0NjkgMjcuNTQ2OSBMMzEuNTY3IDIzLjE2OTMgTDM1LjkyNDEgMTkuMDAxOSBMNDEuNjQzOCAxNi45NDkyIEw0OC4wODkxIDE3LjEwMjMgTDUzLjg4MzUgMTYuODcwOSBMNTguODg0NyAxNC4xMTk3IEw2NC4wOTkgMTAuMDg2NSBMNzAgNy44MDUzIEw3Ni4wODQ2IDguMjIxNiBMODIuMDI2NSA5LjUzODcgTDg4LjA2NTQgMTAuNDQ2NCBMOTMuOTU4NSAxMi4xNTkxIEw5OC43MzIgMTYuMjQ2MiBMMTAyLjIzMDIgMjEuNzY0MSBMMTA1Ljk2MDkgMjYuMTgxNSBMMTExLjI1NTQgMjguNzQ0NiBMMTE3LjExNzggMzEuMzMxNSBMMTIxLjI0NzYgMzUuNzU3NSBMMTIzLjEwNzQgNDEuNjEzNSBMMTI0LjUxNTEgNDcuNDE5MSBMMTI2Ljc2OSA1Mi43NzkzIEwxMjguNjc4MSA1OC4zMjgyIEwxMjguNjIzNSA2NC4yMjYxIEwxMjcuNTEwNiA3MCBaIiBmaWxsPSJ1cmwoI3dheCkiLz4KICAgIDxjaXJjbGUgY3g9IjcwIiBjeT0iNzAiIHI9IjQ0IiBmaWxsPSIjYTk3ZDJjIi8+CiAgPC9nPgogIDxjaXJjbGUgY3g9IjcwIiBjeT0iNzAiIHI9IjQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1ZTQwMGYiIHN0cm9rZS1vcGFjaXR5PSIuNTUiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgPGNpcmNsZSBjeD0iNzAiIGN5PSI3MCIgcj0iMzkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YzZGM5YyIgc3Ryb2tlLW9wYWNpdHk9Ii4zNSIgc3Ryb2tlLXdpZHRoPSIuOCIgc3Ryb2tlLWRhc2hhcnJheT0iMS42IDMiLz4KICA8ZyBmaWx0ZXI9InVybCgjd2F4LXByZXNzKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzAgOTIpIHNjYWxlKC4zNikiIGNsYXNzPSJ3YXgtY3Jlc3QiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTE0KSBzY2FsZSgxLjI1KSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMCAtMTIpIHJvdGF0ZSgtMjQpIHNjYWxlKDEuMCkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMCAtMTIpIHJvdGF0ZSgyNCkgc2NhbGUoMS4wKSI+PHBhdGggY2xhc3M9ImtiLWZpbGwiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIyIC04KSByb3RhdGUoLTUyKSBzY2FsZSguODIpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgLTgpIHJvdGF0ZSg1Mikgc2NhbGUoLjgyKSI+PHBhdGggY2xhc3M9ImtiLWZpbGwiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM0IC0yKSByb3RhdGUoLTc4KSBzY2FsZSguNjIpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzQgLTIpIHJvdGF0ZSg3OCkgc2NhbGUoLjYyKSI+PHBhdGggY2xhc3M9ImtiLWZpbGwiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiIHRyYW5zZm9ybT0ic2NhbGUoLTEgMSkiLz48L2c+PHBhdGggY2xhc3M9ImtiLWxpbmUga2ItY3VybCIgZD0iTTAgMCBDOCAtMiAxNCAtOSAxMyAtMTcgQzEyIC0yNCA0IC0yNyAtMSAtMjMgQy01IC0xOSAtMyAtMTMgMiAtMTMgQzUgLTEzIDYgLTE3IDQgLTE4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNTggNCkgc2NhbGUoMS4zKSIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIGtiLWN1cmwiIGQ9Ik0wIDAgQzggLTIgMTQgLTkgMTMgLTE3IEMxMiAtMjQgNCAtMjcgLTEgLTIzIEMtNSAtMTkgLTMgLTEzIDIgLTEzIEM1IC0xMyA2IC0xNyA0IC0xOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTggNCkgc2NhbGUoLTEuMyAxLjMpIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0tOTIgNiBDLTYwIDEwIC0zMCAtMiAwIC0yIEMzMCAtMiA2MCAxMCA5MiA2Ii8+PHBhdGggY2xhc3M9ImtiLWZpbGwiIGQ9Ik0tMTQgLTIgQy0xMCAtMTIgMTAgLTEyIDE0IC0yIEM4IDAgLTggMCAtMTQgLTIgWiIvPjxjaXJjbGUgY2xhc3M9ImtiLWZpbGwiIGN4PSIwIiBjeT0iLTExOCIgcj0iMyIvPjwvZz4KPC9zdmc+"
+            alt="" />
+        </button>
+      </div>
+      <div class="opening-veil" aria-hidden="true"></div>
+      <p class="hint">សូមចុចលើត្រា ដើម្បីបើកធៀបការ</p>
+    </section>
+
+    <section class="scr" id="cover">
+      <img src="elements/kbach 1.svg" class="corner c1">
+      <img src="elements/kbach 2.svg" class="corner c2">
+      <img src="elements/kbach 3.svg" class="corner c3">
+      <img src="elements/kbach 4.svg" class="corner c4">
+
+      <img
+        class="corner c1"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnLWZvaWwiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIuMzUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzljNzEyNCIvPjxzdG9wIG9mZnNldD0iLjI1IiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PHN0b3Agb2Zmc2V0PSIuNDUiIHN0b3AtY29sb3I9IiNmYmVmYzAiLz48c3RvcCBvZmZzZXQ9Ii42MiIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjxzdG9wIG9mZnNldD0iLjg1IiBzdG9wLWNvbG9yPSIjOWM3MTI0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHN0eWxlPi5rYi1maWxse2ZpbGw6dXJsKCNnLWZvaWwpfS5rYi1saW5le2ZpbGw6bm9uZTtzdHJva2U6dXJsKCNnLWZvaWwpO3N0cm9rZS13aWR0aDoxLjY7c3Ryb2tlLWxpbmVjYXA6cm91bmR9PC9zdHlsZT48ZyB0cmFuc2Zvcm09IiI+PGcgY2xhc3M9ImtiLXN3YXkiPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNNiA2IEgxNTAgTTYgNiBWMTUwIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0xNCAxNCBIMTEwIE0xNCAxNCBWMTEwIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgMjIpIHJvdGF0ZSgxMzUpIHNjYWxlKC45KSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQwIDE2KSByb3RhdGUoMTAwKSBzY2FsZSguNTUpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYgNDApIHJvdGF0ZSgxNzApIHNjYWxlKC41NSkgc2NhbGUoLTEgMSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48cGF0aCBjbGFzcz0ia2ItbGluZSBrYi1jdXJsIiBkPSJNMCAwIEM4IC0yIDE0IC05IDEzIC0xNyBDMTIgLTI0IDQgLTI3IC0xIC0yMyBDLTUgLTE5IC0zIC0xMyAyIC0xMyBDNSAtMTMgNiAtMTcgNCAtMTgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYyIDI0KSBzY2FsZSgxLjEpIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUga2ItY3VybCIgZD0iTTAgMCBDOCAtMiAxNCAtOSAxMyAtMTcgQzEyIC0yNCA0IC0yNyAtMSAtMjMgQy01IC0xOSAtMyAtMTMgMiAtMTMgQzUgLTEzIDYgLTE3IDQgLTE4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNCA2Mikgcm90YXRlKDkwKSBzY2FsZSgxLjEgLTEuMSkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5MiAyMikgcm90YXRlKDkwKSBzY2FsZSguNDIpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgOTIpIHJvdGF0ZSgxODApIHNjYWxlKC40Mikgc2NhbGUoLTEgMSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48Y2lyY2xlIGNsYXNzPSJrYi1maWxsIiBjeD0iMTIyIiBjeT0iMTQiIHI9IjIuNCIvPjxjaXJjbGUgY2xhc3M9ImtiLWZpbGwiIGN4PSIxNCIgY3k9IjEyMiIgcj0iMi40Ii8+PC9nPjwvZz48L3N2Zz4="
+        alt="" />
+      <img
+        class="corner c2"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLjAgMCkgc2NhbGUoLTEgMSkiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZy1mb2lsIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iLjM1Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5YzcxMjQiLz48c3RvcCBvZmZzZXQ9Ii4yNSIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjZmJlZmMwIi8+PHN0b3Agb2Zmc2V0PSIuNjIiIHN0b3AtY29sb3I9IiNkOWIxNWEiLz48c3RvcCBvZmZzZXQ9Ii44NSIgc3RvcC1jb2xvcj0iIzljNzEyNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxzdHlsZT4ua2ItZmlsbHtmaWxsOnVybCgjZy1mb2lsKX0ua2ItbGluZXtmaWxsOm5vbmU7c3Ryb2tlOnVybCgjZy1mb2lsKTtzdHJva2Utd2lkdGg6MS42O3N0cm9rZS1saW5lY2FwOnJvdW5kfTwvc3R5bGU+PGcgdHJhbnNmb3JtPSIiPjxnIGNsYXNzPSJrYi1zd2F5Ij48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTYgNiBIMTUwIE02IDYgVjE1MCIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMTQgMTQgSDExMCBNMTQgMTQgVjExMCIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyIDIyKSByb3RhdGUoMTM1KSBzY2FsZSguOSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MCAxNikgcm90YXRlKDEwMCkgc2NhbGUoLjU1KSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2IDQwKSByb3RhdGUoMTcwKSBzY2FsZSguNTUpIHNjYWxlKC0xIDEpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PHBhdGggY2xhc3M9ImtiLWxpbmUga2ItY3VybCIgZD0iTTAgMCBDOCAtMiAxNCAtOSAxMyAtMTcgQzEyIC0yNCA0IC0yNyAtMSAtMjMgQy01IC0xOSAtMyAtMTMgMiAtMTMgQzUgLTEzIDYgLTE3IDQgLTE4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MiAyNCkgc2NhbGUoMS4xKSIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIGtiLWN1cmwiIGQ9Ik0wIDAgQzggLTIgMTQgLTkgMTMgLTE3IEMxMiAtMjQgNCAtMjcgLTEgLTIzIEMtNSAtMTkgLTMgLTEzIDIgLTEzIEM1IC0xMyA2IC0xNyA0IC0xOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgNjIpIHJvdGF0ZSg5MCkgc2NhbGUoMS4xIC0xLjEpIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTIgMjIpIHJvdGF0ZSg5MCkgc2NhbGUoLjQyKSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyIDkyKSByb3RhdGUoMTgwKSBzY2FsZSguNDIpIHNjYWxlKC0xIDEpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGNpcmNsZSBjbGFzcz0ia2ItZmlsbCIgY3g9IjEyMiIgY3k9IjE0IiByPSIyLjQiLz48Y2lyY2xlIGNsYXNzPSJrYi1maWxsIiBjeD0iMTQiIGN5PSIxMjIiIHI9IjIuNCIvPjwvZz48L2c+PC9nPjwvc3ZnPg=="
+        alt="" />
+      <img
+        class="corner c3"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxNjAuMCkgc2NhbGUoMSAtMSkiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZy1mb2lsIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iLjM1Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5YzcxMjQiLz48c3RvcCBvZmZzZXQ9Ii4yNSIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjZmJlZmMwIi8+PHN0b3Agb2Zmc2V0PSIuNjIiIHN0b3AtY29sb3I9IiNkOWIxNWEiLz48c3RvcCBvZmZzZXQ9Ii44NSIgc3RvcC1jb2xvcj0iIzljNzEyNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxzdHlsZT4ua2ItZmlsbHtmaWxsOnVybCgjZy1mb2lsKX0ua2ItbGluZXtmaWxsOm5vbmU7c3Ryb2tlOnVybCgjZy1mb2lsKTtzdHJva2Utd2lkdGg6MS42O3N0cm9rZS1saW5lY2FwOnJvdW5kfTwvc3R5bGU+PGcgdHJhbnNmb3JtPSIiPjxnIGNsYXNzPSJrYi1zd2F5Ij48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTYgNiBIMTUwIE02IDYgVjE1MCIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMTQgMTQgSDExMCBNMTQgMTQgVjExMCIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyIDIyKSByb3RhdGUoMTM1KSBzY2FsZSguOSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MCAxNikgcm90YXRlKDEwMCkgc2NhbGUoLjU1KSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2IDQwKSByb3RhdGUoMTcwKSBzY2FsZSguNTUpIHNjYWxlKC0xIDEpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PHBhdGggY2xhc3M9ImtiLWxpbmUga2ItY3VybCIgZD0iTTAgMCBDOCAtMiAxNCAtOSAxMyAtMTcgQzEyIC0yNCA0IC0yNyAtMSAtMjMgQy01IC0xOSAtMyAtMTMgMiAtMTMgQzUgLTEzIDYgLTE3IDQgLTE4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MiAyNCkgc2NhbGUoMS4xKSIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIGtiLWN1cmwiIGQ9Ik0wIDAgQzggLTIgMTQgLTkgMTMgLTE3IEMxMiAtMjQgNCAtMjcgLTEgLTIzIEMtNSAtMTkgLTMgLTEzIDIgLTEzIEM1IC0xMyA2IC0xNyA0IC0xOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgNjIpIHJvdGF0ZSg5MCkgc2NhbGUoMS4xIC0xLjEpIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTIgMjIpIHJvdGF0ZSg5MCkgc2NhbGUoLjQyKSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyIDkyKSByb3RhdGUoMTgwKSBzY2FsZSguNDIpIHNjYWxlKC0xIDEpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGNpcmNsZSBjbGFzcz0ia2ItZmlsbCIgY3g9IjEyMiIgY3k9IjE0IiByPSIyLjQiLz48Y2lyY2xlIGNsYXNzPSJrYi1maWxsIiBjeD0iMTQiIGN5PSIxMjIiIHI9IjIuNCIvPjwvZz48L2c+PC9nPjwvc3ZnPg=="
+        alt="" />
+      <img
+        class="corner c4"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLjAgMTYwLjApIHNjYWxlKC0xIC0xKSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnLWZvaWwiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIuMzUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzljNzEyNCIvPjxzdG9wIG9mZnNldD0iLjI1IiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PHN0b3Agb2Zmc2V0PSIuNDUiIHN0b3AtY29sb3I9IiNmYmVmYzAiLz48c3RvcCBvZmZzZXQ9Ii42MiIgc3RvcC1jb2xvcj0iI2Q5YjE1YSIvPjxzdG9wIG9mZnNldD0iLjg1IiBzdG9wLWNvbG9yPSIjOWM3MTI0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDliMTVhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHN0eWxlPi5rYi1maWxse2ZpbGw6dXJsKCNnLWZvaWwpfS5rYi1saW5le2ZpbGw6bm9uZTtzdHJva2U6dXJsKCNnLWZvaWwpO3N0cm9rZS13aWR0aDoxLjY7c3Ryb2tlLWxpbmVjYXA6cm91bmR9PC9zdHlsZT48ZyB0cmFuc2Zvcm09IiI+PGcgY2xhc3M9ImtiLXN3YXkiPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNNiA2IEgxNTAgTTYgNiBWMTUwIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0xNCAxNCBIMTEwIE0xNCAxNCBWMTEwIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgMjIpIHJvdGF0ZSgxMzUpIHNjYWxlKC45KSI+PHBhdGggY2xhc3M9ImtiLWZpbGwgIiBkPSJNMCAwIEMtMTAgLTE2IC0xNCAtMzYgLTYgLTU0IEMwIC02OCAxMiAtNzcgMjEgLTg1IEMyNyAtOTAgMzUgLTg3IDM0IC03OSBDMzMgLTczIDI2IC03MyAyNiAtNzggQzIxIC03MSAxNCAtNjQgMTUgLTU0IEMxNiAtNDIgMjQgLTM4IDIzIC0yNyBDMjIgLTE0IDEyIC02IDAgMCBaIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUiIGQ9Ik0wIC02IEMtMyAtMjAgLTIgLTM2IDQgLTUwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQwIDE2KSByb3RhdGUoMTAwKSBzY2FsZSguNTUpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYgNDApIHJvdGF0ZSgxNzApIHNjYWxlKC41NSkgc2NhbGUoLTEgMSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48cGF0aCBjbGFzcz0ia2ItbGluZSBrYi1jdXJsIiBkPSJNMCAwIEM4IC0yIDE0IC05IDEzIC0xNyBDMTIgLTI0IDQgLTI3IC0xIC0yMyBDLTUgLTE5IC0zIC0xMyAyIC0xMyBDNSAtMTMgNiAtMTcgNCAtMTgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYyIDI0KSBzY2FsZSgxLjEpIi8+PHBhdGggY2xhc3M9ImtiLWxpbmUga2ItY3VybCIgZD0iTTAgMCBDOCAtMiAxNCAtOSAxMyAtMTcgQzEyIC0yNCA0IC0yNyAtMSAtMjMgQy01IC0xOSAtMyAtMTMgMiAtMTMgQzUgLTEzIDYgLTE3IDQgLTE4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNCA2Mikgcm90YXRlKDkwKSBzY2FsZSgxLjEgLTEuMSkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5MiAyMikgcm90YXRlKDkwKSBzY2FsZSguNDIpIj48cGF0aCBjbGFzcz0ia2ItZmlsbCAiIGQ9Ik0wIDAgQy0xMCAtMTYgLTE0IC0zNiAtNiAtNTQgQzAgLTY4IDEyIC03NyAyMSAtODUgQzI3IC05MCAzNSAtODcgMzQgLTc5IEMzMyAtNzMgMjYgLTczIDI2IC03OCBDMjEgLTcxIDE0IC02NCAxNSAtNTQgQzE2IC00MiAyNCAtMzggMjMgLTI3IEMyMiAtMTQgMTIgLTYgMCAwIFoiLz48cGF0aCBjbGFzcz0ia2ItbGluZSIgZD0iTTAgLTYgQy0zIC0yMCAtMiAtMzYgNCAtNTAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgOTIpIHJvdGF0ZSgxODApIHNjYWxlKC40Mikgc2NhbGUoLTEgMSkiPjxwYXRoIGNsYXNzPSJrYi1maWxsICIgZD0iTTAgMCBDLTEwIC0xNiAtMTQgLTM2IC02IC01NCBDMCAtNjggMTIgLTc3IDIxIC04NSBDMjcgLTkwIDM1IC04NyAzNCAtNzkgQzMzIC03MyAyNiAtNzMgMjYgLTc4IEMyMSAtNzEgMTQgLTY0IDE1IC01NCBDMTYgLTQyIDI0IC0zOCAyMyAtMjcgQzIyIC0xNCAxMiAtNiAwIDAgWiIvPjxwYXRoIGNsYXNzPSJrYi1saW5lIiBkPSJNMCAtNiBDLTMgLTIwIC0yIC0zNiA0IC01MCIvPjwvZz48Y2lyY2xlIGNsYXNzPSJrYi1maWxsIiBjeD0iMTIyIiBjeT0iMTQiIHI9IjIuNCIvPjxjaXJjbGUgY2xhc3M9ImtiLWZpbGwiIGN4PSIxNCIgY3k9IjEyMiIgcj0iMi40Ii8+PC9nPjwvZz48L2c+PC9zdmc+"
+        alt="" />
+      <img
+        class="crest rv"
+        src="elements/kbach-divider divider.svg"
+        alt="" />
+      <h1 class="font-family foil rv">សិរីសួស្តីអាពាហ៍ពិពាហ៍</h1>
+      <p class="font">
+        The Wedding Invitation
+      </p>
+      <div class="logo rv" style="width: min(70vw, 280px)" data-logo></div>
+      <!-- <div class="en rv">BORN HOURTHORNG &amp; RITH GUEKCHENG</div> -->
+      <!-- <h1 class="sm rv">យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</h1> -->
+      <div class="date rv">
+        <div><small>ថ្ងៃ</small>អាទិត្យ</div>
+        <div><small>ទី</small>១៣</div>
+        <div><small>ខែ</small>ធ្នូ</div>
+        <div><small>ឆ្នាំ</small>២០២៦</div>
+      </div>
+      <br>
+      <h5 class="sm rv  style="opacity: 0.8">
+        ថ្ងៃអាទិត្យ ៤កើត ខែមិគសិរ ឆ្នាំមមី អដ្ឋស័ក ពុទ្ធសករាជ ២៥៧០ 
+      </h5>
+      <h5 class="sm rv" style="opacity: 0.8">
+       នៅ គេហដ្ឋានខាងស្រី ភូមិព្រះប្រសប់ ឃុំព្រះប្រសប់ ស្រុកខ្សាច់កណ្តាល ខេត្តកណ្តាល 
+      </h5>
+      <!-- <div class="cue" style="bottom: 3.4svh">SCROLL ↓</div> -->
+    
+    </section>
+
+    <main id="main">
+      <header class="site-nav">
+        <a class="site-brand" href="#cover" aria-label="Back to invitation top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <b>ហ៊ូរថង <i>&amp;</i> ហ្កេកចេង</b>
+            <small>The Wedding Invitation</small>
+          </span>
+        </a>
+        <div class="nav-actions">
+          <a class="nav-link" href="#venue">ទីតាំង</a>
+          <button id="mus" aria-label="តន្ត្រី">♪</button>
+        </div>
+      </header>
+       <section class="sec invitation-feature">
+        <img
+          class="feature-photo rvl"
+          src="picture/story/HTTT9571.jpg"
+          alt="Hourthorng and Guekcheng in traditional Khmer wedding attire" />
+
+          <div class="feature-copy">
+            <h2 class="font_size foil rvl ">សិរីសួស្តីអាពាហ៍ពិពាហ៍</h2>
+
+            <div class="feature-parents">
+              <div class="rvl align">
+                <h3>មាតាបិតា កូនប្រុសនាម</h3>
+                <p>លោក ប៉ូច ចំរើន<br />លោកស្រី ធិប ហុង</p>
+              </div>
+              <div class="rvl align">
+                <h3>មាតាបិតា កូនស្រីនាម</h3>
+                <p>លោក សយ សារិត<br />លោកស្រី សេង គន្ធី</p>
+              </div>
+            </div>
+
+            <h1 class="feature-eyebrow rvl foil" >យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</h1>
+            <p class="feature-invitation rvl">
+              សូមគោរពអញ្ជើញ ឯកឧត្តម លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា
+              ចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យសិរីសួស្តីមង្គល
+              ក្នុងពិធីអាពាហ៍ពិពាហ៍កូនប្រុស និងកូនស្រីរបស់យើងខ្ញុំ។
+            </p>
+
+            <div class="feature-parents">
+              <div class="rvl align">
+                <p> កូនប្រុសនាម</p>
+                <h6 class="size_h3 foil">ប៊ន ហ៊ួរថង</h6>
+              </div>
+              <div class="rvl align">
+                <p> កូនស្រីនាម</p>
+                <h6 class="size_h3 foil">រិទ្ធ ហ្កេកចេង</h6>
+              </div>
+            </div>
+            
+            <p class="feature-date rvl">
+              នឹងប្រព្រឹត្តនៅថ្ងៃអាទិត្យ ៤កើត ខែមិគសិរ ឆ្នាំមមី អដ្ឋស័ក ពុទ្ធសករាជ ២៥៧០ ត្រូវនឹង 
+              ថ្ងៃទី១៣ ខែធ្នូ ឆ្នាំ២០២៦ វេលាម៉ោង ៥:០០ ល្ងាច នៅ គេហដ្ឋានខាងស្រី ភូមិព្រះប្រសប់ 
+              ឃុំព្រះប្រសប់ ស្រុកខ្សាច់កណ្តាល ខេត្តកណ្តាល ដោយមេត្រីភាព ។ សូមអរគុណ!
+            </p>
+          </div>
+      </section>
+      <section class="sec intro">
+        <img class="crr rvl" src="elements/kbach 7.svg" />
+        <h2 class="foil rvl">កូនកំលោះ និង កូនក្រមុំ</h2>
+
+        <div class="intro-frame rvl">
+          <img
+            class="arch"
+            src="picture/story/HTTT9571.jpg"
+            alt="Hourthorng and Guekcheng in traditional Khmer wedding attire" />
+          <span class="portrait-seal" aria-hidden="true">H · G</span>
+        </div>
+
+        <div class="par">
+          <div class="rvl">
+            <h3>កូនប្រុសនាម</h3>
+            <p class="partner-name foil">ប៊ន ហ៊ួរថង</p>
+            <h1 class="partner-latin">BORN HOURTHORNG</h1>
+          </div>
+          <div class="rvl">
+            <h3>កូនស្រីនាម</h3>
+            <p class="partner-name foil">រិទ្ធ ហ្កេកចេង</p>
+            <h1 class="partner-latin">RITH GUEKCHENG</h1>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec countdown-section">
+        <div class="mq" aria-hidden="true">
+          សិរីសួស្តី · Blessings · សិរីសួស្តី · Blessings · សិរីសួស្តី · 
+          Blessings
+        </div>
+        <h2 class="foil">
+          រាប់ថយក្រោយ ឆ្ពោះទៅថ្ងៃមង្គល <br>
+          <img class="crr" src="elements/kbach 7.svg" />
+        </h2>
+
+        <div class="cd" id="cd"></div>
+        <div class="countdown-ornament" aria-hidden="true"></div>
+
+        <p class="countdown-date align">ថ្ងៃអាទិត្យ ទី១៣ ខែធ្នូ ឆ្នាំ២០២៦</p>
+        <p class="countdown-lunar align">
+          ត្រូវនឹង ថ្ងៃអាទិត្យ ៤កើត ខែមិគសិរ ឆ្នាំមមី អដ្ឋស័ក ពុទ្ធសករាជ ២៥៧០
+        </p>
+      </section>
+
+      <section class="sec schedule-section">
+        <h2 class="foil schedule-heading">
+          កម្មវិធីសិរីសួស្តីអាពាហ៍ពិពាហ៍ <br>
+          <img class="crr "  src="elements/kbach 7.svg" />
+        </h2>
+        <div class="schedule-days">
+          <div class="schedule-day">
+            <h1 class="font-date foil">កម្មវិធីថ្ងៃទី១៖ ថ្ងៃសៅរ៍ ទី១២ ខែធ្នូ ឆ្នាំ២០២៦</h1>
+            <div class="prog">
+
+            <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 7 14h26L20 6ZM10 16v13m7-13v13m6-13v13m7-13v13M7 32h26M16 11h8" />
+              <path d="M20 6c-2-2 1-3 0-5" />
+            </svg>
+            <div>
+              <time>០៣:០០ រសៀល</time>
+              <b>ពិធីសែនក្រុងពាលី</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 28h18M14 25c0-5 2-9 6-9s6 4 6 9M17 13c0-2 2-2 2-4m4 4c0-2 2-2 2-4M9 32h22" />
+              <path d="M20 16v-3m-2 3 2-3 2 3" />
+            </svg>
+            <div>
+              <time>០៤:០០ រសៀល</time>
+              <b>ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត</b>
+            </div>
+          </div>
+          
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 23h24l-2 8H10l-2-8ZM11 23c1-7 5-11 9-11s8 4 9 11M15 18h10M14 34h12" />
+              <path d="M18 9c0-2 2-2 2-4m4 4c0-2 2-2 2-4" />
+            </svg>
+            <div>
+              <time>០៥:០០ ល្ងាច</time>
+              <b>អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារពេលល្ងាច</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="20" cy="20" r="13" />
+              <path d="m11 27 16-16m-13 19 16-16M12 13l15 15" />
+              <circle cx="11" cy="29" r="2" /><circle cx="29" cy="11" r="2" />
+            </svg>
+            <div>
+              <time>០៦:០០ ល្ងាច</time>
+              <b>ពិធីកាត់ខាន់ស្លា</b>
+            </div>
+          </div>
+            </div>
+          </div>
+      
+          <div class="schedule-day">
+            <h3 class="font-date foil">កម្មវិធីថ្ងៃទី២៖ ថ្ងៃអាទិត្យ ទី១៣ ខែធ្នូ ឆ្នាំ២០២៦</h3>
+            <div class="prog">
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="14" r="3" /><circle cx="28" cy="14" r="3" />
+              <path d="M6 29c0-5 2-8 6-8s6 3 6 8m4 0c0-5 2-8 6-8s6 3 6 8M8 32h24" />
+            </svg>
+            <div>
+              <time>០៦:០០ ព្រឹក</time>
+              <b>ជួបជុំភ្ញៀវកិត្តិយស</b>
+              <p>ដើម្បីរៀបចំពិធីហែជំនូន</p>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m5 17 15-9 15 9H5ZM9 19v10m7-10v10m8-10v10m7-10v10M6 32h28" />
+              <path d="M13 13h14m-7-5c-2-2 1-3 0-5" />
+            </svg>
+            <div>
+              <time>០៧:០០ ព្រឹក</time>
+              <b>ពិធីហែជំនូនចូលរោងជ័យ</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 30h22M12 27l2-10h12l2 10M17 17c-2-3 1-5 3-7 2 3 4 5 1 7M18 23h4" />
+              <circle cx="13" cy="12" r="2" /><circle cx="28" cy="13" r="2" />
+            </svg>
+            <div>
+              <time>០៧:៣០ ព្រឹក</time>
+              <b>ពិធីរៀបរាប់ផ្លែឈើ និងពិធីប៉ាយកុងម៉ា</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="20" cy="20" r="14" />
+              <path d="m12 27 14-14m-12 17 16-16m-18 9 14 8m-8-19 8 8" />
+              <circle cx="12" cy="29" r="2" /><circle cx="28" cy="11" r="2" />
+            </svg>
+            <div>
+              <time>០៩:០០ ព្រឹក</time>
+              <b>ពិធីកាត់សក់បង្កក់សិរី ចម្រើនកេសា</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 31V16m0 4c-5-5-9-3-10-2 2 5 5 7 10 6m0-4c5-5 9-3 10-2-2 5-5 7-10 6M14 32h12" />
+              <path d="M20 12c-3-3 2-4 0-7m5 9c-2-2 2-3 1-5" />
+              <circle cx="20" cy="21" r="12" />
+            </svg>
+            <div>
+              <time>១០:០០ ព្រឹក</time>
+              <b>ពិធីបង្វិលពពិល សំពះផ្ទឹម សែនចងដៃ ព្រះថោងនាងនាគ</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 23h24l-2 8H10l-2-8ZM11 23c1-7 5-11 9-11s8 4 9 11M15 18h10M14 34h12" />
+              <path d="M18 9c0-2 2-2 2-4m4 4c0-2 2-2 2-4" />
+            </svg>
+            <div>
+              <time>១២:០០ ថ្ងៃត្រង់</time>
+              <b>អញ្ជើញភ្ញៀវកិត្តិយសពិសាអាហារថ្ងៃត្រង់</b>
+            </div>
+          </div>
+
+          <div class="pi">
+            <svg class="schedule-event-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 23h24l-2 8H10l-2-8ZM11 23c1-7 5-11 9-11s8 4 9 11M15 18h10M14 34h12" />
+              <path d="M18 9c0-2 2-2 2-4m4 4c0-2 2-2 2-4" />
+            </svg>
+            <div>
+              <time>០៥:០០ ល្ងាច</time>
+              <b>ទទួលបដិសណ្ឋារកិច្ចភ្ញៀវកិត្តិយសពិសាអាហារ</b>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="schedule-note">ពេលល្ងាច នៅគេហដ្ឋានខាងស្រី ដោយមេត្រីភាព។ សូមអរគុណ!</p>
+
+      </section>
+
+
+      <section class="sec story-section" id="ls">
+        <div class="story-heading">
+          <span>OUR STORY · A JOURNEY IN GOLD</span>
+          <h2 class="foil">
+            រឿងស្នេហា <br>
+            <img class="crr" src="elements/kbach 7.svg" alt="" />
+          </h2>
+          <p>ពីជំហានដំបូង រហូតដល់ថ្ងៃដែលយើងសន្យាថានឹងដើរជាមួយគ្នាជារៀងរហូត</p>
+        </div>
+        <div class="story-gallery" role="region" aria-label="ដំណើររូបថតនៃក្តីស្រឡាញ់">
+          <div class="strip" tabindex="0" aria-label="ដំណើររឿងស្នេហា">
+            <figure class="story-card story-copy-card story-opening-card">
+              <figcaption>
+                <span class="story-copy-kicker">ពីពេលព្រឹក ដល់ពេលល្ងាច</span>
+                <!-- <b class="foil">ពីពេលព្រឹក ដល់ពេលល្ងាច</b> -->
+                <b class="foil">ដំណើររឿងនៃស្នេហ៍</b>
+                <span class="story-copy-line">រំកិលដើម្បីទស្សនា</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img src="picture/HTTT9282.jpg" alt="គូស្នេហ៍ក្នុងឈុតប្រពៃណីខ្មែរនៅប្រាសាទ" loading="lazy" decoding="async">
+              <figcaption>
+                <b class="foil">ជួបគ្នាថ្ងៃដំបូង</b><span>ស្នាមញញឹមមួយ បានចាប់ផ្តើមរឿងរ៉ាវរបស់យើង</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img src="picture/HTTT9730.jpg" alt="កូនកំលោះនិងកូនក្រមុំចែករំលែកពេលវេលាដ៏ផ្អែមល្ហែម" loading="lazy" decoding="async">
+              <figcaption>
+                <b class="foil">ពេលវេលាដ៏មានន័យ</b><span>នៅក្បែរគ្នា រាល់ជំហានក្លាយជាអនុស្សាវរីយ៍</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img src="picture/HTTT8250.jpg" alt="គូស្នេហ៍ថតរូបនៅមុខស្ថាបត្យកម្មបុរាណ" loading="lazy" decoding="async">
+              <figcaption>
+                <b class="foil">ក្រោមមេឃអង្គរ</b><span>ក្នុងសម្រស់បុរាណ មានសេចក្តីស្រឡាញ់ថ្មីមួយ</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img src="picture/14.jpg" alt="គូស្នេហ៍នៅមុខប្រាសាទអង្គរវត្ត" loading="lazy" decoding="async" />
+              <figcaption>
+                <b class="foil">ក្តីស្រឡាញ់កាន់តែជ្រាលជ្រៅ</b><span>ពីថ្ងៃលិចដល់ថ្ងៃរះ យើងនៅតែជ្រើសរើសគ្នា</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT8229.jpg"
+                alt="កូនក្រមុំអង្គុយក្នុងឈុតប្រពៃណីនៅប្រាសាទ"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ដៃក្នុងដៃ</b><span>ដំណើរមានន័យ ពេលមានអ្នកដើរជាមួយ</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT8250.jpg"
+                alt="គូស្នេហ៍ក្នុងឈុតប្រពៃណីនៅមាត់ប្រាសាទ"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ស្នាមញញឹមរបស់យើង</b><span>រូបភាពតូចៗ រក្សាទុកក្តីសុខដ៏ធំ</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT8332.jpg"
+                alt="គូស្នេហ៍នៅមុខប្រាសាទអង្គរវត្ត"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ស្រមោលប្រាសាទ</b><span>ក្រោមថ្មបុរាណ បេះដូងយើងសរសេរអនាគត</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT9121.jpg"
+                alt="គូស្នេហ៍ឈរក្បែរគ្នាក្រោមឆ័ត្រនៅមុខប្រាសាទ"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ក្បែរគ្នាជានិច្ច</b><span>សូម្បីភ្លៀងធ្លាក់ ក៏ដៃយើងមិនលែងគ្នា</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT9282.jpg"
+                alt="កូនក្រមុំអង្គុយក្នុងឈុតប្រពៃណីក្បែរប្រាសាទ"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ក្តីស្រឡាញ់ដ៏ស្ងប់ស្ងាត់</b><span>ក្នុងភាពស្ងប់ស្ងាត់ ក៏ឮបេះដូងឆ្លើយតប</span>
+              </figcaption>
+            </figure>
+
+            <figure class="story-card rvl">
+              <img
+                src="picture/story/HTTT9571.jpg"
+                alt="គូស្នេហ៍ក្នុងឈុតប្រពៃណីឈរក្បែរគ្នានៅប្រាសាទ"
+                loading="lazy"
+                decoding="async" />
+              <figcaption>
+                <b class="foil">ចាប់ផ្តើមជារៀងរហូត</b><span>ថ្ងៃនេះ ពីរបេះដូងចាប់ផ្តើមដំណើរតែមួយ</span>
+              </figcaption>
+            </figure>
+
+
+            <figure class="story-card story-copy-card story-ending-card">
+              <figcaption>
+                <span class="story-copy-kicker">A LOVE WITHOUT END</span>
+                <b class="foil">ហើយដំណើរនៃស្នេហ៍</b>
+                <span class="story-copy-line">នឹងបន្តជារៀងរហូត</span>
+              </figcaption>
+            </figure>
+            
+          </div>
+          <div class="story-progress" aria-hidden="true">
+            <span>01</span><i><b></b></i><span>12</span>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="sec candlelight-page story-finale" id="candlelight" aria-label="Touch the water to float a lotus lantern">
+        <img class="candlelight-photo" src="picture/story/HTTT9571.jpg"loading="lazy" decoding="async" />
+        <canvas class="water-canvas" aria-hidden="true"></canvas>
+        <canvas class="embers-canvas" aria-hidden="true"></canvas>
+        <div class="candlelight-copy">
+          <p class="foil font_size" align="center">ពីរបេះដូងមួយគូ ក្លាយជាដំណើរជីវិតតែមួយ</p>
+          <h2 class="foil">ហ៊ួរថង <span>&amp;</span> ហ្កេកចេង</h2>
+          <!-- <p class="foil "align="center">
+            Touch the water to float a lantern of wishes
+          </p> -->
+        </div>
+      </section>
+      
+      <section class="sec">
+        <h2 class="foil"> 
+            វិចិត្រសាលរូបភាព <br>អនុស្សាវរីយ៍មុនថ្ងៃមង្គល <br>
+            <img class="crr " src="elements/kbach 7.svg" />
+        </h2>
+        <div class="mas" id="mas">
+          <img src="picture/01.jpg" alt="" loading="lazy"  data-i="0" >
+          <img src="picture/02.jpg" alt="" loading="lazy"  data-i="1" >
+          <img src="picture/03.jpg" alt="" loading="lazy"  data-i="2" >
+          <img src="picture/04.jpg" alt="" loading="lazy"  data-i="3" >
+          <img src="picture/05.jpg" alt="" loading="lazy"  data-i="4" >
+          <img src="picture/06.jpg" alt="" loading="lazy"  data-i="5" >
+          <img src="picture/07.jpg" alt="" loading="lazy"  data-i="6" >
+          <img src="picture/08.jpg" alt="" loading="lazy"  data-i="7" >
+          <img src="picture/11.jpg" alt="" loading="lazy"  data-i="8" >
+          <img src="picture/12.jpg" alt="" loading="lazy"  data-i="9" >
+          <img src="picture/13.jpg" alt="" loading="lazy"  data-i="10" >
+          <img src="picture/14.jpg" alt="" loading="lazy"  data-i="11" >
+          <img src="picture/Finalll.jpg" alt="" loading="lazy"  data-i="12" >
+          <img src="picture/Finalll.jpg" alt="" loading="lazy"  data-i="13" >
+          <img src="picture/HTTT7960.jpg" alt="" loading="lazy"  data-i="14" >
+          <img src="picture/HTTT9730.jpg" alt="" loading="lazy"  data-i="15" >
+          <img src="picture/HTTT9699.jpg" alt="" loading="lazy"  data-i="16" >
+          <img src="picture/HTTT9603.jpg" alt="" loading="lazy"  data-i="17" >
+          <img src="picture/HTTT9585.jpg" alt="" loading="lazy"  data-i="18" >
+          <img src="picture/HTTT9282.jpg" alt="" loading="lazy"  data-i="19" >
+          <img src="picture/HTTT9121.jpg" alt="" loading="lazy"  data-i="20" >
+          <img src="picture/HTTT9101 copy 2.jpg" loading="lazy"  data-i="21" >
+          <img src="picture/HTTT9028.jpg" alt="" loading="lazy"  data-i="22" >
+          <img src="picture/HTTT8971.jpg" alt="" loading="lazy"  data-i="23" >
+          <img src="picture/HTTT8899.jpg" alt="" loading="lazy"  data-i="24" >
+          <img src="picture/HTTT8470.jpg" alt="" loading="lazy"  data-i="25" >
+          <img src="picture/HTTT8427.jpg" alt="" loading="lazy"  data-i="26" >
+          <img src="picture/HTTT8332.jpg" alt="" loading="lazy"  data-i="27" >
+          <img src="picture/HTTT8279.jpg" alt="" loading="lazy"  data-i="28" >
+          <img src="picture/HTTT7987.jpg" alt="" loading="lazy"  data-i="29" >
+          <img src="picture/HTTT8061.jpg" alt="" loading="lazy"  data-i="30" >
+          <img src="picture/HTTT8229.jpg" alt="" loading="lazy"  data-i="31" >
+          <img src="picture/HTTT8250.jpg" alt="" loading="lazy"  data-i="32" >
+        
+        </div>
+      </section>
+      <section class="sec" id="venue">
+        <img class="cr" src="elements/crest.svg" alt="" />
+        <h2 class="foil">ទីកន្លែង</h2>
+        <p class="t">
+          ភូមិព្រះប្រសប់ ឃុំព្រះប្រសប់ ស្រុកខ្សាច់កណ្ដាល ខេត្តកណ្ដាល
+        </p>
+        <iframe
+          loading="lazy"
+          src="https://www.google.com/maps?q=11.7758%2C105.026005&amp;output=embed"
+          title="map"></iframe>
+        <button 
+          class="btn"
+          href="https://maps.app.goo.gl/7XpgfdhbuYz3ZCfGA"
+          target="_blank"
+          rel="noopener"
+          >បើក Google Maps
+        </button>
+        <button class="btn" id="ics" href="#">រក្សាទុកក្នុងប្រតិទិន</button>
+      </section>
+      <!-- <section class="sec">
+        <h2 class="foil">ចំណងដៃ</h2>
+        <div class="qrs">
+            <div class="qb">
+              <div
+                class="box"
+                id="b1"
+                role="button"
+                tabindex="0"
+                aria-label="KHQR QR code. Activate to choose a replacement image.">
+                <img
+                  class="qr-preview"
+                  src="picture/QR.jpg"
+                  alt="KHQR QR code" />
+              </div>
+              <img id="i1" alt="KHQR" />
+          
+            </div>
+            <div class="qb">
+              <div
+                class="box"
+                id="b2"
+                role="button"
+                tabindex="0"
+                aria-label="ABA QR code. Activate to choose a replacement image.">
+                <img
+                  class="qr-preview"
+                  src="picture/QR.jpg"
+                  alt="ABA QR code" />
+              </div>
+              <img id="i2" alt="ABA" />
+            </div>
+
+        </div>
+      </section> -->
+    
+      <section class="sec thanks-section" id="thanks" aria-labelledby="thanks-title">
+        <h3 class="foil" id="thanks-title">សូមថ្លែងអំណរគុណ និងសូមអភ័យទោស</h3>
+        <p>
+         យើងខ្ញុំជាមាតា បិតា កូនប្រុស កូនស្រី សូមថ្លែងអំណរគុណ
+          យ៉ាងជ្រាលជ្រៅចំពោះការអញ្ជើញចូលរួមជាភ្ញៀវកិត្តិយសក្នុង
+          ពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី របស់យើងខ្ញុំ។
+          សូមគោរពជូនពរ ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា អ្នកឧកញ៉ា
+          ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា និងភ្ញៀវ កិត្តិយសទាំងអស់
+          សុខភាពល្អ និងទទួលបានជោគជ័យគ្រប់ភារកិច្ច។
+          យើងខ្ញុំសូមអភ័យទោសដោយពុំបានជួបអញ្ជើញដោយផ្ទាល់
+          និងការសរសេរឈ្មោះរបស់ភ្ញៀវកិត្តិយសមិនបានត្រឹមត្រូវ
+          ឬពុំបានសរសេរឈ្មោះ។ 
+        </p>
+        <h3 class="foil size_h3" >សូមអរគុណ</h3>
+      </section>
+
+        <section class="sec closing-section">
+
+        <p class="foil" style="text-align: center;">
+          សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមាន និងពរជ័យដ៏ថ្លៃថ្លារបស់លោកអ្នក
+        </p>
+        <div class="sh">
+          <a target="_blank" rel="noopener" id="shT">
+            <i aria-hidden="true" style="background: #229ed9">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="m4.2 11.5 14.9-5.7c.7-.3 1.3.2 1.1 1l-2.5 12c-.2.8-.8 1-1.5.6l-4.1-3-2 1.9c-.2.2-.4.4-.8.4l.3-4.3 7.9-7.1c.3-.3-.1-.4-.5-.2L7.3 13.2l-4.1-1.3c-.9-.3-.9-.9 1-1.4Z" fill="currentColor"/>
+              </svg>
+            </i>
+            <span><small>ចែករំលែកតាម</small><strong>Telegram</strong></span>
+          </a>
+          <a id="shM" href="https://t.me/Ahcheng">
+            <i aria-hidden="true" style="background: linear-gradient(145deg, #087cff, #c536e8)">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3.2c-5.1 0-9.2 3.7-9.2 8.3 0 2.4 1.1 4.5 3 6l-.7 3.2 3.5-1.8c1.1.4 2.2.6 3.4.6 5.1 0 9.2-3.7 9.2-8.2s-4.1-8.1-9.2-8.1Zm.9 10.9-2.4-2.5-4.7 2.5 5.2-5.5 2.5 2.5 4.6-2.5-5.2 5.5Z" fill="currentColor"/>
+              </svg>
+            </i>
+            <span><small>ចែករំលែកតាម</small><strong>Messenger</strong></span>
+          </a>
+          <a target="_blank" rel="noopener" id="shF" href="">
+            <i aria-hidden="true" style="background: #1877f2">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4Z" fill="currentColor"/>
+              </svg>
+            </i>
+            <span><small>ចែករំលែកតាម</small><strong>Facebook</strong></span>
+          </a>
+          <a href="#https://www.facebook.com/share/1BwdpWHvxN/?mibextid=wwXIfr" id="shC">
+            <i aria-hidden="true" style="background: #d9b15a; color: #2a2f16">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M9.6 14.4a1 1 0 0 1 0-1.4l3.4-3.4a1 1 0 0 1 1.4 1.4L11 14.4a1 1 0 0 1-1.4 0Zm-2.8 2.8a4 4 0 0 1 0-5.7l2.8-2.8a4 4 0 0 1 5.7 0 1 1 0 0 1-1.4 1.4 2 2 0 0 0-2.8 0l-2.8 2.8a2 2 0 0 0 2.8 2.8 1 1 0 1 1 1.4 1.4 4 4 0 0 1-5.7 0Zm10.4-7.6a1 1 0 0 1 0-1.4 2 2 0 0 0-2.8-2.8l-2.8 2.8a2 2 0 0 0 0 2.8 1 1 0 0 1-1.4 1.4 4 4 0 0 1 0-5.7l2.8-2.8a4 4 0 0 1 5.7 5.7 1 1 0 0 1-1.4 0Z" fill="currentColor"/>
+              </svg>
+            </i>
+            <span><small>ចម្លងតំណភ្ជាប់</small><strong>ចែករំលែក</strong></span>
+          </a>
+        </div>
+        <div
+          class="closing-brand logo"
+          data-logo
+          role="img"
+          aria-label="ហ៊ូរថង និង ហ្កេកចេង"></div>
+      </section>
+
+    </main>
+    <div id="vw"></div>
+    <audio  id="aud" loop src="song MP3/song.m4a"></audio>
+    <script src="javascript/script.js"></script>
+  </body>
+</html>

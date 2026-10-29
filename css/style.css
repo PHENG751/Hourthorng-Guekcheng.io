@@ -795,7 +795,7 @@ body {
       rgba(42, 47, 22, 0.48) 40%,
       rgba(42, 47, 22, 0.88)
     ),
-    url("../picture/Finalll.jpg");
+    url("../picture/Finalll.jpg") center/cover;
   text-align: center;
   gap: 1.4svh;
   padding: 3svh 6vw;
